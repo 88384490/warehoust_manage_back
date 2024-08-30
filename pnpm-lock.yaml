@@ -13,6 +13,7 @@ specifiers:
   '@types/supertest': ^2.0.11
   '@typescript-eslint/eslint-plugin': ^5.0.0
   '@typescript-eslint/parser': ^5.0.0
+  class-transformer: ^0.5.1
   class-validator: ^0.14.1
   eslint: ^8.0.1
   eslint-config-prettier: ^8.3.0
@@ -31,9 +32,10 @@ specifiers:
   webpack: ^5.94.0
 
 dependencies:
-  '@nestjs/common': 9.4.3_32b85c7a66e1741edea0fcd9b7950df9
+  '@nestjs/common': 9.4.3_7c613202e4ccd67f9c4f13ae90edfa59
   '@nestjs/core': 9.4.3_6a8a11a460c2119ffdef6ca9575552eb
   '@nestjs/platform-express': 9.4.3_adb5556349178ca678c9faf31331c9c2
+  class-transformer: 0.5.1
   class-validator: 0.14.1
   reflect-metadata: 0.1.14
   rxjs: 7.8.1
@@ -865,7 +867,7 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nestjs/common/9.4.3_32b85c7a66e1741edea0fcd9b7950df9:
+  /@nestjs/common/9.4.3_7c613202e4ccd67f9c4f13ae90edfa59:
     resolution: {integrity: sha512-Gd6D4IaYj01o14Bwv81ukidn4w3bPHCblMUq+SmUmWLyosK+XQmInCS09SbDDZyL8jy86PngtBLTdhJ2bXSUig==}
     peerDependencies:
       cache-manager: <=5
@@ -881,6 +883,7 @@ packages:
       class-validator:
         optional: true
     dependencies:
+      class-transformer: 0.5.1
       class-validator: 0.14.1
       iterare: 1.2.1
       reflect-metadata: 0.1.14
@@ -906,7 +909,7 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': 9.4.3_32b85c7a66e1741edea0fcd9b7950df9
+      '@nestjs/common': 9.4.3_7c613202e4ccd67f9c4f13ae90edfa59
       '@nestjs/platform-express': 9.4.3_adb5556349178ca678c9faf31331c9c2
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
@@ -925,7 +928,7 @@ packages:
       '@nestjs/common': ^9.0.0
       '@nestjs/core': ^9.0.0
     dependencies:
-      '@nestjs/common': 9.4.3_32b85c7a66e1741edea0fcd9b7950df9
+      '@nestjs/common': 9.4.3_7c613202e4ccd67f9c4f13ae90edfa59
       '@nestjs/core': 9.4.3_6a8a11a460c2119ffdef6ca9575552eb
       body-parser: 1.20.2
       cors: 2.8.5
@@ -976,7 +979,7 @@ packages:
       '@nestjs/platform-express':
         optional: true
     dependencies:
-      '@nestjs/common': 9.4.3_32b85c7a66e1741edea0fcd9b7950df9
+      '@nestjs/common': 9.4.3_7c613202e4ccd67f9c4f13ae90edfa59
       '@nestjs/core': 9.4.3_6a8a11a460c2119ffdef6ca9575552eb
       '@nestjs/platform-express': 9.4.3_adb5556349178ca678c9faf31331c9c2
       tslib: 2.5.3
@@ -1923,6 +1926,9 @@ packages:
   /cjs-module-lexer/1.3.1:
     resolution: {integrity: sha512-a3KdPAANPbNE4ZUv9h6LckSl9zLsYOP4MBmhIPkRaeyybt+r4UghLvq+xw/YwUcC1gqylCkL4rdVs3Lwupjm4Q==}
     dev: true
+
+  /class-transformer/0.5.1:
+    resolution: {integrity: sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==}
 
   /class-validator/0.14.1:
     resolution: {integrity: sha512-2VEG9JICxIqTpoK1eMzZqaV+u/EiwEJkMGzTrZf6sU/fwsnOITVgYJ8yojSy6CaXtO9V0Cc6ZQZ8h8m4UBuLwQ==}

@@ -1,4 +1,4 @@
-import {isString} from "class-validator";
+import { isString } from 'class-validator';
 
 export interface ProductOrder {
   // 主id

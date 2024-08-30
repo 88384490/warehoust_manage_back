@@ -8,14 +8,13 @@ import { ProductOrderRepository } from './product-order.repository';
 @Injectable()
 export class ProductOrderService {
   constructor(
-    private readonly productOrderRepository: ProductOrderRepository,
-  ) { }
-  
+    private productOrderRepository: ProductOrderRepository,
+  ) {}
 
   /**
    * 保存订单
    */
   public saveOrder(orderInfo: ProductOrder) {
-    return this.productOrderRepository.saveOrder(orderInfo)
+    return this.productOrderRepository.saveOrder(orderInfo);
   }
 }

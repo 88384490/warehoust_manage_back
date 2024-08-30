@@ -1,4 +1,4 @@
-const srcDir = ''
+const srcDir = '';
 
 import { promises as fs } from 'fs';
 
@@ -8,12 +8,12 @@ import { promises as fs } from 'fs';
  * @returns 返回包含文件内容的 Promise
  */
 async function readFileAsync(filePath: string): Promise<string> {
-    try {
-        const data = await fs.readFile(filePath, 'utf-8');
-        return data;
-    } catch (error) {
-        throw new Error(`Failed to read file: ${error.message}`);
-    }
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    return data;
+  } catch (error) {
+    throw new Error(`Failed to read file: ${error.message}`);
+  }
 }
 
 /**
@@ -22,10 +22,13 @@ async function readFileAsync(filePath: string): Promise<string> {
  * @param content - 要写入的内容
  * @returns 返回一个表示写入操作完成的 Promise
  */
-async function writeFileAsync(filePath: string, content: string): Promise<void> {
-    try {
-        await fs.writeFile(filePath, content, 'utf-8');
-    } catch (error) {
-        throw new Error(`Failed to write file: ${error.message}`);
-    }
+async function writeFileAsync(
+  filePath: string,
+  content: string,
+): Promise<void> {
+  try {
+    await fs.writeFile(filePath, content, 'utf-8');
+  } catch (error) {
+    throw new Error(`Failed to write file: ${error.message}`);
+  }
 }
