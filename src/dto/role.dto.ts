@@ -22,9 +22,11 @@ export class Role {
   /**
    * 创建时间
    */
+  @IsString())
   create_time: string;
   /**
    * 最后修改时间
    */
+  @IsString()
   last_update_time: string;
 }

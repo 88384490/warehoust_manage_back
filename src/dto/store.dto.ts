@@ -59,22 +59,27 @@ export class Store {
   /**
    * 仓库id
    */
+  @IsString()
   store_id: string;
   /**
    * 仓库名称
    */
+  @IsString()
   store_name: string;
   /**
    * 地址
    */
+  @IsString()
   path: string;
   /**
    * 仓库容积
    */
+  @IsString()
   storage_volume: string;
   /**
    * 负责人
    */
+  @IsString()
   user_name: string;
   /**
    * 库位
@@ -83,9 +88,11 @@ export class Store {
   /**
    * 创建时间
    */
+  @IsString()
   create_time: string;
   /**
    * 修改时间
    */
+  @IsString()
   update_time: string;
 }
