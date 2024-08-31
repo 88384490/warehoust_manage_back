@@ -16,7 +16,7 @@ export class ProductOrderController {
    */
   @Post('/order-create')
   public createOrder(@Body() body: ProductOrder) {
-    const msg = this.productOrderService.saveOrder(body);
+    const msg = this.productOrderService.createOrder(body);
     console.log(msg);
 
     return {

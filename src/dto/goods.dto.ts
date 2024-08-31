@@ -1,29 +1,16 @@
-/**
- * 商品容积
- */
-class GoodsVolume {
-  /**
-   * 商品长
-   */
-  goods_length: number;
-  /**
-   * 商品宽
-   */
-  goods_width: number;
-  /**
-   * 商品高
-   */
-  goods_height: number;
-}
+import { GoodsVolume } from './common/goods-volume';
+import { IsString } from 'class-validator';
 
 export class Goods {
   /**
    * 商品id
    */
+  @IsString({ message: '商品id必须为string类型' })
   goods_id: string;
   /**
    * 商品编号
    */
+  @IsString({ message: '商品编号必须为string类型' })
   goods_code: string;
   /**
    * 商品名称
