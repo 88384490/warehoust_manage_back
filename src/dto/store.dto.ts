@@ -1,43 +1,54 @@
+import { IsNumber, IsString } from 'class-validator';
+
 class GoodsInfo {
   /**
    * 商品id
    */
+  @IsString()
   goods_id: string;
   /**
    * 商品编码
    */
-  gosods_code: string;
+  @IsString()
+  goods_code: string;
   /**
    * 商品名称
    */
+  @IsString()
   goods_name: string;
   /**
    * 商品类目
    */
+  @IsString()
   goods_category: string;
   /**
    * 商品体积
    */
+  @IsString()
   goods_volume: string;
   /**
    * 商品描述
    */
+  @IsString()
   description: string;
 }
 
-class LocaltionInfo {
+class LocationInfo {
   /**
    * 库位长
    */
-  localtion_length: number;
+  @IsNumber()
+  location_length: number;
   /**
    * 库位宽
    */
-  localtion_width: number;
+  @IsNumber()
+  location_width: number;
   /**
    * 库位容积
    */
-  localtion_volume: number;
+  @IsNumber()
+  location_volume: number;
   /**
    * 存放商品信息
    */
@@ -68,7 +79,7 @@ export class Store {
   /**
    * 库位
    */
-  localtion_info: LocaltionInfo;
+  localtion_info: LocationInfo;
   /**
    * 创建时间
    */
