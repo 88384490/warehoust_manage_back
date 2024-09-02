@@ -16,11 +16,19 @@ export class ProductOrderController {
    */
   @Post('/order-create')
   public createOrder(@Body() body: ProductOrder) {
-    const msg = this.productOrderService.createOrder(body);
-    console.log(msg);
-
+    const { productId, userId } = body;
+    const order = this.productOrderService.createOrder({ productId, userId });
+    if (!order) {
+      return {
+        msg: '订单创建失败',
+        code: 500,
+        success: false,
+      };
+    }
     return {
-      msg,
+      msg: '订单创建成功',
+      code: 200,
+      success: true,
     };
   }
 }

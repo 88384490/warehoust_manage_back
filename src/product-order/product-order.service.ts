@@ -12,8 +12,13 @@ export class ProductOrderService {
   /**
    * 保存订单
    */
-  public createOrder(orderInfo: ProductOrder) {
-    return this.productOrderRepository.saveOrder(orderInfo);
+  public createOrder(orderInfo: { productId: string; userId: string }) {
+    //const productInfo = this.productOrderRepository.checkOrderValid();
+    return '';
+  }
+
+  public queryOrderById(productId: string) {
+    return '';
   }
 
   public queryOrderList() {
