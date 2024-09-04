@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { GoodsInfo } from './common/goods-info';
 import { UserInfo } from './common/user-info';
 
@@ -31,13 +31,16 @@ export class Dispatch {
   /**
    * 商品信息
    */
+  @IsNotEmpty()
   goods_info: GoodsInfo;
   /**
    * 创建人
    */
+  @IsNotEmpty()
   create_user_info: UserInfo;
   /**
    * 出库人
    */
+  @IsNotEmpty()
   dispatch_user_info: UserInfo;
 }
