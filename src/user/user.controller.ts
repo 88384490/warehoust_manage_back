@@ -1,14 +1,19 @@
 import { Controller, Post } from '@nestjs/common';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
+  constructor(private userService: UserService) {}
+
   // 创建用户信息
   @Post('createUserInfo')
   public createUserInfo() {
+    const userInfo = this.userService.createUserInfo();
     return {
       code: 200,
-      msg: '访问成功',
+      msg: '创建成功',
       success: true,
+      ...userInfo,
     };
   }
   // 删除用户

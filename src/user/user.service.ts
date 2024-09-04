@@ -1,10 +1,35 @@
 import { Injectable } from '@nestjs/common';
+import * as AV from 'leancloud-storage';
+import { UserInfo } from '../dto/user-info.dto';
+import { forIn } from 'lodash';
 
 @Injectable()
 export class UserService {
-  public createUserInfo() {
+  private AV: any;
+
+  constructor() {
+    this.AV = AV;
+    this.AV.init({
+      appId: 'VJghmrbKBXmDFdu6J9IYA6Uj-gzGzoHsz',
+      appKey: 'bcF09okkFoxC4mA4650NQcam',
+      serverURL: 'https://vjghmrbk.lc-cn-n1-shared.com',
+    });
+  }
+
+  public async createUserInfo(user: UserInfo) {
+    //const userObject = new this.AV.Object('UserInfo');
+    //const user = new UserInfo();
+    //user.user_name = '周毅';
+    //user.user_role = 'administrator';
+    //user.is_valid = true;
+    //forIn(user, (value, key) => {
+    //userObject.set(key, value);
+    //});
+    //const saveResult = userObject.save();
     // 1. 验证用户名是否重复
     // 2. 存入数据库
+    //return { success: true, data: saveResult.id };
+    return { success: true, data: user };
   }
   // 删除用户
   public removeUserInfo() {
