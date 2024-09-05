@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsBoolean, IsString } from 'class-validator';
 
 export class UserInfo {
   /**
@@ -19,7 +19,7 @@ export class UserInfo {
   /**
    * 是否生效
    */
-  @IsString()
+  @IsBoolean()
   is_valid: boolean;
   /**
    * 创建时间

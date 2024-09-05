@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import * as AV from 'leancloud-storage';
-import { UserInfo } from '../dto/user-info.dto';
 import { forIn } from 'lodash';
+import { UserInfo } from '../dto/user-info.dto';
 
 @Injectable()
 export class UserService {
   private AV: any;
+  private userObject: any;
+  private queryObject: any;
 
   constructor() {
     this.AV = AV;
@@ -14,22 +16,18 @@ export class UserService {
       appKey: 'bcF09okkFoxC4mA4650NQcam',
       serverURL: 'https://vjghmrbk.lc-cn-n1-shared.com',
     });
+    this.userObject = new this.AV.Object('UserInfo');
+    this.queryObject = new this.AV.Query('UserInfo').descending('createdAt');
   }
 
   public async createUserInfo(user: UserInfo) {
-    //const userObject = new this.AV.Object('UserInfo');
-    //const user = new UserInfo();
-    //user.user_name = '周毅';
-    //user.user_role = 'administrator';
-    //user.is_valid = true;
-    //forIn(user, (value, key) => {
-    //userObject.set(key, value);
-    //});
-    //const saveResult = userObject.save();
-    // 1. 验证用户名是否重复
-    // 2. 存入数据库
-    //return { success: true, data: saveResult.id };
-    return { success: true, data: user };
+    forIn(user, (value, key) => {
+      this.userObject.set(key, value);
+    });
+    const saveResult = await this.userObject.save();
+    //1. 验证用户名是否重复
+    //2. 存入数据库
+    return { success: true, data: saveResult.id, msg: '用户创建成功' };
   }
   // 删除用户
   public removeUserInfo() {
@@ -40,8 +38,9 @@ export class UserService {
     return '';
   }
   // 查询用户信息列表
-  public queryUserList() {
-    return '';
+  public async queryUserList() {
+    const queryResult = await this.queryObject.find();
+    return { success: true, data: queryResult, msg: '查询成功' };
   }
   // 根据查询用户信息
   public queryUserInfo() {
