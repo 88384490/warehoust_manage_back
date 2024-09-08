@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Post, Get, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserInfo } from '../dto/user-info.dto';
 
@@ -28,8 +28,14 @@ export class UserController {
   }
   // 查询用户信息列表
   @Get('queryUserList')
-  public async queryUserList() {
-    const userInfoList = await this.userService.queryUserList();
+  public async queryUserList(@Query() query: any) {
+    const { user_name, is_valid, page_index, page_size } = query;
+    const userInfoList = await this.userService.queryUserList({
+      user_name,
+      is_valid,
+      page_index,
+      page_size,
+    });
     return {
       code: 200,
       success: true,
@@ -37,9 +43,10 @@ export class UserController {
     };
   }
   // 根据查询用户信息
-  @Post('queryUserinfo')
-  public queryUserinfo() {
-    return '';
+  @Get('queryUserInfo')
+  public async queryUserinfo(@Query() query: any) {
+    const { user_id } = query;
+    return { code: 200, success: true, data: user_id };
   }
 
   // 验证用户信息

@@ -3,11 +3,19 @@ import * as AV from 'leancloud-storage';
 import { forIn } from 'lodash';
 import { UserInfo } from '../dto/user-info.dto';
 
+interface IQueryUserList {
+  user_name: string;
+  is_valid: boolean;
+  page_index: number;
+  page_size: number;
+}
+
 @Injectable()
 export class UserService {
   private AV: any;
   private userObject: any;
-  private queryObject: any;
+  private userQueryObject: any;
+  private roleQueryObject: any;
 
   constructor() {
     this.AV = AV;
@@ -17,7 +25,10 @@ export class UserService {
       serverURL: 'https://vjghmrbk.lc-cn-n1-shared.com',
     });
     this.userObject = new this.AV.Object('UserInfo');
-    this.queryObject = new this.AV.Query('UserInfo').descending('createdAt');
+    this.userQueryObject = new this.AV.Query('UserInfo').descending(
+      'createdAt',
+    );
+    this.roleQueryObject = new this.AV.Query('Role');
   }
 
   public async createUserInfo(user: UserInfo) {
@@ -34,17 +45,34 @@ export class UserService {
     return '';
   }
   // 修改用户信息
-  public updateUserInfo() {
+  public updateUserInfo(user: UserInfo) {
     return '';
   }
   // 查询用户信息列表
-  public async queryUserList() {
-    const queryResult = await this.queryObject.find();
+  public async queryUserList({
+    user_name,
+    is_valid,
+    page_index,
+    page_size,
+  }: IQueryUserList) {
+    if (user_name) {
+      this.userQueryObject.equalTo('user_name', user_name);
+    }
+    if (is_valid) {
+      this.userQueryObject.equalTo('is_valid', is_valid);
+    }
+    if (page_index > 1) {
+      this.userQueryObject.skip(page_index * page_size);
+    }
+    const queryResult = await this.userQueryObject.limit(page_size).find();
     return { success: true, data: queryResult, msg: '查询成功' };
   }
   // 根据查询用户信息
-  public queryUserInfo() {
-    return '';
+  public async queryUserInfo(userId) {
+    const queryResult = await this.userQueryObject
+      .equalTo('_id', userId)
+      .find();
+    return { success: true, data: queryResult, msg: '查询成功' };
   }
 
   public checkAccount() {
